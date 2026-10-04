@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Descubre tendencias y contrastes en las temperaturas.">
+  <title>Mapa térmico · DWML Weather Lab</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="data/washington.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/analysis.js"></script>
+  <script defer src="js/mapa.js"></script>
+</head>
+
+<body>
+  <header>
+    <p>DWML / WEATHER LAB</p>
+    <h1>Mapa térmico</h1>
+    <p>Descubre tendencias y contrastes en las temperaturas.</p>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="visor.html">Visor</a></li>
+        <li><a href="mapa.html" aria-current="page">Mapa térmico</a></li>
+        <li><a href="comparador.html">Comparador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section data-source>
+      <h2>Tu previsión</h2>
+      <form>
+        <p><label for="city">Ciudad</label> <select id="city" name="city"></select></p>
+        <p><button type="submit">Consultar previsión</button> <button type="button" data-action="download"
+            disabled>Guardar XML</button></p>
+      </form>
+      <details>
+        <summary>Usar datos sin conexión</summary>
+        <p><label for="file">Importar DWML</label> <input id="file" type="file"
+            accept=".xml,.dwml,.txt,application/xml,text/xml"></p>
+        <p><button type="button" data-action="example">Cargar ejemplo de Washington</button></p>
+        <p>El ejemplo es una previsión guardada. Revisa siempre su fecha de emisión.</p>
+      </details>
+      <p role="status">Elige una ciudad y consulta su previsión, o importa un XML.</p>
+    </section>
+
+    <section data-result hidden>
+      <h2>Temperaturas</h2>
+      <p data-summary></p>
+
+      <figure>
+        <canvas width="880" height="290" role="img"
+          aria-label="Evolución de mínimas y máximas, con los valores disponibles en la tabla siguiente."></canvas>
+        <figcaption>Azul: mínimas · Naranja: máximas. Los huecos indican datos ausentes.</figcaption>
+      </figure>
+
+      <table>
+        <caption>Temperaturas y probabilidad máxima diaria de lluvia</caption>
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Mín. °C</th>
+            <th scope="col">Máx. °C</th>
+            <th scope="col">Lluvia %</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <p><span data-level="very-cold">&lt; 5 °C</span> <span data-level="cold">5–12 °C</span> <span
+          data-level="mild">12–20 °C</span> <span data-level="warm">20–28 °C</span> <span data-level="hot">≥ 28
+          °C</span></p>
+      <p>Las fechas corresponden al inicio local de los periodos. La media se calcula con pares completos de mínimas y
+        máximas, no con observaciones horarias. Los colores acompañan los valores, sin sustituirlos.</p>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Manuel García Baldó · Trabajos (III): Lenguaje derivado de XML · ECW · MIW</p>
+  </footer>
+  
+</body>
+
+</html>

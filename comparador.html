@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dos destinos, las mismas fechas y diferencias claras.">
+  <title>Comparador de ciudades · DWML Weather Lab</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="data/washington.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="wasm/weather.js"></script>
+  <script defer src="js/wasm.js"></script>
+  <script defer src="js/comparador.js"></script>
+</head>
+
+<body>
+  <header>
+    <p>DWML / WEATHER LAB</p>
+    <h1>Comparador de ciudades</h1>
+    <p>Dos destinos, las mismas fechas y diferencias claras.</p>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="visor.html">Visor</a></li>
+        <li><a href="mapa.html">Mapa térmico</a></li>
+        <li><a href="comparador.html" aria-current="page">Comparador</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section data-source>
+      <h2>Primera ciudad</h2>
+      <form>
+        <p><label for="city-a">Ciudad</label> <select id="city-a" name="city"></select></p>
+        <p><button type="submit">Consultar previsión</button> <button type="button" data-action="download"
+            disabled>Guardar XML</button></p>
+      </form>
+      <details>
+        <summary>Usar datos sin conexión</summary>
+        <p><label for="file-a">Importar DWML</label> <input id="file-a" type="file"
+            accept=".xml,.dwml,.txt,application/xml,text/xml"></p>
+        <p><button type="button" data-action="example">Cargar ejemplo de Washington</button></p>
+        <p>El ejemplo es una previsión guardada. Revisa siempre su fecha de emisión.</p>
+      </details>
+      <p role="status">Elige una ciudad y consulta su previsión, o importa un XML.</p>
+    </section>
+    <section data-source>
+      <h2>Segunda ciudad</h2>
+      <form>
+        <p><label for="city-b">Ciudad</label> <select id="city-b" name="city"></select></p>
+        <p><button type="submit">Consultar previsión</button> <button type="button" data-action="download"
+            disabled>Guardar XML</button></p>
+      </form>
+      <details>
+        <summary>Usar datos sin conexión</summary>
+        <p><label for="file-b">Importar DWML</label> <input id="file-b" type="file"
+            accept=".xml,.dwml,.txt,application/xml,text/xml"></p>
+        <p><button type="button" data-action="example">Cargar ejemplo de Washington</button></p>
+        <p>El ejemplo es una previsión guardada. Revisa siempre su fecha de emisión.</p>
+      </details>
+      <p role="status">Elige una ciudad y consulta su previsión, o importa un XML.</p>
+    </section>
+    <section>
+      <h2>Comparar las previsiones</h2>
+      <p><button type="button" data-action="compare" disabled>Comparar ciudades</button></p>
+      <p role="status" data-comparison-status>Carga las dos ciudades para comparar.</p>
+    </section>
+    <section data-result hidden>
+      <h2>Lo que cambia entre ciudades</h2>
+      <p data-summary></p>
+      <table>
+        <caption>Comparación por fechas comunes</caption>
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">A mín./máx. °C</th>
+            <th scope="col">B mín./máx. °C</th>
+            <th scope="col">Δ máx. °C</th>
+            <th scope="col">Lluvia A/B %</th>
+            <th scope="col">Δ lluvia pp</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p>A es la primera ciudad y B la segunda. Las diferencias son B menos A; un valor positivo significa más
+        temperatura o más probabilidad de lluvia en B. La lluvia se compara en puntos porcentuales (pp).</p>
+      <p>Se comparan fechas locales con datos disponibles en ambos archivos. Las ciudades pueden tener distintos husos
+        horarios: una misma fecha no representa necesariamente las mismas horas. Revisa las fechas de emisión al
+        importar archivos.</p>
+    </section>
+  </main>
+  <footer>
+    <p>Manuel García Baldó · Trabajos (III): Lenguaje derivado de XML · ECW · MIW</p>
+  </footer>
+</body>
+
+</html>

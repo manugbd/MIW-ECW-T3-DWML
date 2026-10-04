@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="El tiempo de una ciudad, explicado por periodos.">
+  <title>Visor meteorológico · DWML Weather Lab</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="data/washington.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/visor.js"></script>
+</head>
+
+<body>
+  <header>
+    <p>DWML / WEATHER LAB</p>
+    <h1>Visor meteorológico</h1>
+    <p>El tiempo de una ciudad, explicado por periodos.</p>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="visor.html" aria-current="page">Visor</a></li>
+        <li><a href="mapa.html">Mapa térmico</a></li>
+        <li><a href="comparador.html">Comparador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section data-source>
+      <h2>Tu previsión</h2>
+      <form>
+        <p><label for="city">Ciudad</label> <select id="city" name="city"></select></p>
+        <p><button type="submit">Consultar previsión</button> <button type="button" data-action="download"
+            disabled>Guardar XML</button></p>
+      </form>
+
+      <details>
+        <summary>Usar datos sin conexión</summary>
+        <p><label for="file">Importar DWML</label> <input id="file" type="file"
+            accept=".xml,.dwml,.txt,application/xml,text/xml"></p>
+        <p><button type="button" data-action="example">Cargar ejemplo de Washington</button></p>
+        <p>El ejemplo es una previsión guardada. Revisa siempre su fecha de emisión.</p>
+      </details>
+
+      <p role="status">Elige una ciudad y consulta su previsión, o importa un XML.</p>
+    </section>
+
+    <section data-result hidden>
+      <h2>Previsión</h2>
+      <table>
+        <caption>Periodos locales de la ciudad · — significa dato ausente</caption>
+        <thead>
+          <tr>
+            <th scope="col">Fecha y hora</th>
+            <th scope="col">Temperatura</th>
+            <th scope="col">Lluvia %</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Descripción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      
+      <p>Temperaturas en °C y lluvia como probabilidad. Las descripciones originales del NWS se muestran en inglés. Las
+        observaciones actuales se excluyen de la previsión.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Manuel García Baldó · Trabajos (III): Lenguaje derivado de XML · ECW · MIW</p>
+  </footer>
+
+</body>
+
+</html>
